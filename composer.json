@@ -1,0 +1,12 @@
+{
+  "name": "geelik/laravel-assets-manager",
+  "require": {
+	"php": "^7.0",
+	"illuminate/support": "~5.4.0"
+  },
+  "autoload": {
+	"psr-4": {
+	  "Geelik\\AssetsManager": "src"
+	}
+  }
+}
