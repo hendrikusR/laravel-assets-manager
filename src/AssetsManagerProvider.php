@@ -42,10 +42,11 @@ class AssetsManagerProvider extends ServiceProvider{
 				$code .= '$isJs = ends_with($src, \'.js\');'.PHP_EOL;
 				$code .= '$html = null;'.PHP_EOL;
 				$code .= '$asset_method = (config(\'assets.use_https\', false) == false) ? \'asset\' : \'secure_asset\';'.PHP_EOL;
+				$code .= '$asset_url = (starts_with(\'https\') || starts_with(\'http\') ? $src : $asset_method($src);'.PHP_EOL;
 				$code .= 'if($isCss):'.PHP_EOL;
-				$code .= '$html = \'<link href="\'.$asset_method($src).\'" >\'.PHP_EOL;'.PHP_EOL;
+				$code .= '$html = \'<link href="\'.$asset_url.\'" >\'.PHP_EOL;'.PHP_EOL;
 				$code .= 'elseif($isJs):'.PHP_EOL;;
-				$code .= '$html = \'<script src="\'.$asset_method($src).\'" ></script>\'.PHP_EOL;'.PHP_EOL;
+				$code .= '$html = \'<script src="\'.$asset_url.\'" ></script>\'.PHP_EOL;'.PHP_EOL;
 				$code .= 'endif;'.PHP_EOL;
 				$code .= 'if(! empty($html)):'.PHP_EOL;
 				$code .= 'echo $html;'.PHP_EOL;
