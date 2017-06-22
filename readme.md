@@ -1,10 +1,10 @@
-#Laravel Assets Manager
+# Laravel Assets Manager
 
 This Laravel >=5.4 package help you manage your assets and their dependencies.
 
-##How to use
+## How to use
 
-###Configure your assets
+### Configure your assets
 
 ```php
 // config/assets.php
@@ -71,12 +71,12 @@ array [
 */
 ```
 
-####Note
+#### Note
 __The package will search assets only in the given group (`js` in our example)__
 
 So an asset can only depends on other assets in the same group.
 
-##Install
+## Install
 ```bash
 composer require Geelik/laravel-assets-manager
 ```
