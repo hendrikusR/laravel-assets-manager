@@ -89,7 +89,7 @@ composer require Geelik/laravel-assets-manager
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --provider="Geelik\AssetsManager\AssetsManager" --tag="config"
+php artisan vendor:publish --provider="Geelik\AssetsManager\AssetsManagerProvider" --tag="config"
 ```
 
 This is the contents of the published config file:
