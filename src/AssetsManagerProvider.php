@@ -19,7 +19,8 @@ class AssetsManagerProvider extends ServiceProvider{
 	
 	public function register()
 	{
-		$this->app->alias('AssetsManager', AssetsManager::class);
+		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+		$loader->alias('AssetsManager', AssetsManager::class);
 		
 		$this->publishes(array(
 			__DIR__.'/config/assets.php' => config_path('assets.php')
