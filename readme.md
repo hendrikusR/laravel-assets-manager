@@ -17,18 +17,25 @@ return array(
             'jquery-tab-plus' => array('js/jquery-tab-plus.js', array('jquery-tab')),
             'vue'             => array('js/vue.js')
         ),
-        'css' => array(
-            //'asset_name'   => array('filepath', 'dependencies')
-        )
+        'css' => array()
     )
 );
 ```
-|  | Description |
+| Name | Description |
 |------------|-----------------------|
 | use_https | If true, generate https links |
+| groups | you can create as many group as you wants. It's just here to better organize assets |
+
+#### Asset syntax
+
+```php
+//'asset_name'   => array('filepath', 'dependencies')
+```
+| Name | Description |
+|------------|-----------------------|
 | asset_name | Used as an identifier |
-| filepath | File path passed to `asset` helper|
-| dependencies |Array representing the dependencies of this asset|
+| filepath | Path of the asset, if absolute url will not be changed, if relative will be passed to `asset` (`secure_asset` if use_https is true ) helper |
+| dependencies |Array representing the dependencies of this asset, can be null if no dependencies|
 
 ### Call your asset in your view
 
@@ -75,7 +82,7 @@ composer require Geelik/laravel-assets-manager
 // config/app.php
 'providers' => [
     ...
-    Geelik\AssetsManager\AssetsManager::class,
+    Geelik\AssetsManager\AssetsManagerProvider::class,
 ];
 ```
 
