@@ -71,6 +71,11 @@ array [
 */
 ```
 
+####Note
+__The package will search assets only in the given group (`js` in our example)__
+
+So an asset can only depends on other assets in the same group.
+
 ##Install
 ```bash
 composer require Geelik/laravel-assets-manager
