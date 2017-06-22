@@ -8,5 +8,17 @@
 	"psr-4": {
 	  "Geelik\\AssetsManager": "src"
 	}
+  },
+  "autoload-dev": {
+	"psr-4": {
+	  "Geelik\\AssetsManager\\Test\\": "tests"
+	}
+  },
+  "extra": {
+	"laravel": {
+	  "providers": [
+		"Geelik\\AssetsManager\\AssetsManagerProvider"
+	  ]
+	}
   }
 }

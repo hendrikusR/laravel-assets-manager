@@ -11,7 +11,7 @@ return array(
     'use_https' => false,
     'groups' => array(
         'js' => array(
-            'jquery'          => array('js/jquery.js', null),
+            'jquery'          => array('http://code.jquery.com/jquery.min.js', null),
             'jquery-tab'      => array('js/jquery-tab.js', array('jquery')),
             'jquery-tab-plus' => array('js/jquery-tab-plus.js', array('jquery-tab')),
             'vue'             => array('js/vue.js')
@@ -24,6 +24,7 @@ return array(
 ```
 |  | Description |
 |------------|-----------------------|
+| use_https | If true, generate https links |
 | asset_name | Used as an identifier |
 | filepath | File path passed to `asset` helper|
 | dependencies |Array representing the dependencies of this asset|
@@ -38,11 +39,28 @@ return array(
 ...
 ```
 
-This will reslve automatically the dependencies for you and print
+This will resolve automatically the dependencies for you and print
 ```html 
  <script src="http://yourdomain.com/js/jquery.js"></script>
  <script src="http://yourdomain.com/js/jquery-tab.js"></script>
  <script src="http://yourdomain.com/js/jquery-tab-plus.js"></script>
+```
+
+If you prefer to generate html yourself you can call
+
+```php
+use Geelik\AssetsManager\Facades\AssetsManager;
+
+AssetsManager::get('js', 'jquery-tab-plus');
+
+/*
+this return an array correctly oordered
+array [
+  "jquery" => "http://code.jquery.com/jquery.min.js"
+  "jquery-tab" => "js/jquery-tab.js"
+  "jquery-tab-plus" => "js/jquery-tab-plus.js"
+]
+*/
 ```
 
 ##Install
@@ -70,8 +88,11 @@ This is the contents of the published config file:
 
 ```php
 return array(
-    'js' => array(),
-    'css' => array()
+    'use_https' => false,
+    'groups' => array(
+        'js' => array(),
+        'css' => array()
+    )
 );
 
 ```
