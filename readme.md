@@ -7,6 +7,7 @@ This Laravel >=5.4 package help you manage your assets and their dependencies.
 ###Configure your assets
 
 ```php
+// config/assets.php
 return array(
     'use_https' => false,
     'groups' => array(
