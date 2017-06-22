@@ -10,6 +10,10 @@ This Laravel >=5.4 package help you manage your assets and their dependencies.
 // config/assets.php
 return array(
     'use_https' => false,
+    'templates' => array(
+        'css' => '<link rel="stylesheet" href="ASSET_SRC" />',
+        'js'  => '<script type="text/javascript" src="ASSET_SRC"></script>'
+    ),
     'groups' => array(
         'js' => array(
             'jquery'          => array('http://code.jquery.com/jquery.min.js', null),
@@ -24,6 +28,7 @@ return array(
 | Name | Description |
 |------------|-----------------------|
 | use_https | If true, generate https links |
+| templates | Let you define html code generated |
 | groups | you can create as many group as you wants. It's just here to better organize assets |
 
 #### Asset syntax
@@ -43,18 +48,18 @@ return array(
 // welcome.blade.php
 
 ...
-@assetsmanager(js, jquery-tab-plus)
+@assetsmanager('js', 'jquery-tab-plus')
 ...
 ```
 
 This will resolve automatically the dependencies for you and print
 ```html 
- <script src="http://yourdomain.com/js/jquery.js"></script>
- <script src="http://yourdomain.com/js/jquery-tab.js"></script>
- <script src="http://yourdomain.com/js/jquery-tab-plus.js"></script>
+ <script type="text/javascript" src="http://yourdomain.com/js/jquery.js"></script>
+ <script type="text/javascript" src="http://yourdomain.com/js/jquery-tab.js"></script>
+ <script type="text/javascript" src="http://yourdomain.com/js/jquery-tab-plus.js"></script>
 ```
 
-If you prefer to generate html yourself you can call
+### Get dependencies as array
 
 ```php
 use Geelik\AssetsManager\Facades\AssetsManager;
@@ -62,7 +67,7 @@ use Geelik\AssetsManager\Facades\AssetsManager;
 AssetsManager::get('js', 'jquery-tab-plus');
 
 /*
-this return an array correctly oordered
+this return an array correctly ordered
 array [
   "jquery" => "http://code.jquery.com/jquery.min.js"
   "jquery-tab" => "js/jquery-tab.js"
@@ -102,6 +107,10 @@ This is the contents of the published config file:
 ```php
 return array(
     'use_https' => false,
+    'templates' => array(
+        'css' => '<link rel="stylesheet" href="ASSET_SRC" />',
+        'js' => '<script type="text/javascript" src="ASSET_SRC"></script>'
+    ),
     'groups' => array(
         'js' => array(),
         'css' => array()
